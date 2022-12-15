@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import Container from "./componets/Container";
 import FormTodo from "./componets/FormTodo";
 import Checkbox from "./componets/Checkbox";
@@ -9,9 +9,6 @@ function App() {
   return (
     <div className="App">
       <Container/>
-      <FormTodo/>
-      <Checkbox/>
-      <Tasklist/>
     </div>
   );
 }
