@@ -1,36 +1,42 @@
+//Importamos librerías
 import React from "react";
+//Impotamos el componente checkbox
 import Checkbox from "./Checkbox";
 
+//declaramos el componente
 const TaskList = (props) => {
-  // (C)
-  const { list, setList } = props;
+  // FUNCIONALIDAD
+  const { list, setList } = props;// constante que tiene el valor de las propiedades de la lista de tareas y el método setList
 
+  //Creamos un  método onChangeStatus para el manejador onChange,
   const onChangeStatus = (e) => {
-    const { name, checked } = e.target;
+    const { name, checked } = e.target; //creamos la contante name y le asignamos la referencia del objeto que lanzo el evento
 
-    // (E)
+    // creamos la función updateList que recorre la lista
     const updateList = list.map((item) => ({
       ...item,
-      done: item.id === name ? checked : item.done,
+      done: item.id === name ? checked : item.done,//actualiza el valor del checkbox 
     }));
-    setList(updateList);
+    setList(updateList); //retorna la lista actualizada
   };
 
-  // (D)
+  //Creamos un manejador de evento onclick para el botón Delete all done
   const onClickRemoveItem = (e) => {
-    const updateList = list.filter((item) => !item.done);
-    setList(updateList);
+    const updateList = list.filter((item) => !item.done); //ekimina todas las tereas que están echas
+    setList(updateList); //actualiza la lista
   };
 
-  // (A-2)
+  //Método que mapea la lista de tareas
   const chk = list.map((item) => (
-    <Checkbox key={item.id} data={item} onChange={onChangeStatus} />
+    <Checkbox key={item.id} data={item} onChange={onChangeStatus} /> //añade un checkbox por cada item de la lista
   ));
+
+  //HTML
   return (
     <div className="todo-list">
-      {/*(A-1)*/}
+      {/*Si la lista está vacía muestra el mensaje No Task, de lo contrario muestra la lista*/}
       {list.length ? chk : "No tasks"}
-      {/*(B)*/}
+      {/*Si la lista no está vacía muestra el botón*/}
       {list.length ? (
         <p>
           <button className="button blue" onClick={onClickRemoveItem}>
@@ -41,5 +47,5 @@ const TaskList = (props) => {
     </div>
   );
 };
-
+//Exportamos el componente
 export default TaskList;

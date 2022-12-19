@@ -4,8 +4,9 @@ const FormTodo = (props) => {
   //FUNCIONALIDAD
   const { handleAddItem } = props; // constante que tiene el valor del props
   const [description, setDescription] = useState(""); //constante para manejar el estado, se inicia vacío
+  
+  //creamos el evento handleSubmit
   const handleSubmit = (e) => {
-    //creamos el evento handleSubmit
     e.preventDefault(); // Evita que la página se refresque
     //a la constante handleAddItem, le añadimos los siguientes atributos
     handleAddItem({
@@ -13,7 +14,7 @@ const FormTodo = (props) => {
       id: (+new Date()).toString(),
       description,
     });
-    setDescription(""); // dejamos la descripicón con un estdo vacío nuevamente
+    setDescription(""); // dejamos la descripicón con un estado vacío nuevamente
   };
   //HTML
   return (

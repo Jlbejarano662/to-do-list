@@ -1,10 +1,15 @@
+//Importamos React y el componente Fragment de React
 import React, { Fragment } from "react";
 
+//Declaramos el componente Checkbox
 const Checkbox = (props) => {
-  const {
+  //FUNCIONALIDAD
+  const { //recibe de props la propiedad data y el método onChange
     onChange,
-    data: { id, description, done },
+    data: { id, description, done }, //desestructura y abstrae el id, descriptio y done
   } = props;
+
+  //HTML
   return (
     <Fragment>
       {/* Just ADD !!!! */}
@@ -22,16 +27,17 @@ const Checkbox = (props) => {
           <circle id="todo__circle" cx="13.5" cy="12.5" r="10" />
         </defs>
       </svg>
-
+      {/* Generamos una etiqueta label mostrará la tarea*/}
       <label className="todo new-item">
+        {/* Generamos uninput de tipo checkbox */}
         <input
           className="todo__state"
-          name={id}
+          name={id} // le asignamos al atributo nombre el id del elemento prop
           type="checkbox"
-          defaultChecked={done}
-          onChange={onChange}
+          defaultChecked={done} //le asignamos el atributo done del prop
+          onChange={onChange} //le asignamos el evento onChange del prop
         />
-        {/* Just ADD !!!! */}
+        {/* Elementos SVG que simulan la tarea tachada */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -43,10 +49,11 @@ const Checkbox = (props) => {
           <use xlinkHref="#todo__check" className="todo__check" />
           <use xlinkHref="#todo__circle" className="todo__circle" />
         </svg>
+        {/* Muestra la descripción de la tarea */}
         <div className="todo__text">{description}</div>
       </label>
     </Fragment>
   );
 };
-
+//Exportamos el componente
 export default Checkbox;
